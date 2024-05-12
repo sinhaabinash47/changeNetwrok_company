@@ -1,0 +1,36 @@
+html,
+body,
+.container {
+  height: 100%;
+}
+
+.login-form {
+  width: 350px;
+  padding: 2rem 1rem 1rem;
+}
+
+form {
+  padding: 1rem;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.password-toggle-icon.css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+  position: absolute;
+}
+
+ul {
+  list-style-type: none;
+  /* cursor: pointer; */
+}
+
+

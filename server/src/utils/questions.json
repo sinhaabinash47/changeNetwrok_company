@@ -1,0 +1,222 @@
+[
+  {
+    "question": "Which type of JavaScript language is ___?",
+    "answer": "Object-Based",
+    "options": [
+      "Object-Oriented",
+      "Object-Based",
+      "Assembly-language",
+      "High-level"
+    ],
+    "topic": "JavaScript"
+  },
+  {
+    "question": "What is Python?",
+    "answer": "A programming language",
+    "options": [
+      "A type of snake",
+      "A programming language",
+      "A type of food",
+      "A game"
+    ],
+    "topic": "Python"
+  },
+  {
+    "question": "Which one of the following also known as Conditional Expression:",
+    "answer": "immediate if",
+    "options": [
+      "Alternative to if-else",
+      "Switch statement",
+      "If-then-else statement",
+      "immediate if"
+    ],
+    "topic": "JavaScript"
+  },
+  {
+    "question": "What is React.js?",
+    "answer": "A JavaScript library",
+    "options": [
+      "A programming language",
+      "A database",
+      "A framework",
+      "A JavaScript library"
+    ],
+    "topic": "React.js"
+  },
+  {
+    "question": "What is Angular?",
+    "answer": "A framework",
+    "options": [
+      "A programming language",
+      "A database",
+      "A framework",
+      "A JavaScript library"
+    ],
+    "topic": "Angular"
+  },
+  {
+    "question": "What is Vue.js?",
+    "answer": "A framework",
+    "options": [
+      "A programming language",
+      "A database",
+      "A framework",
+      "A JavaScript library"
+    ],
+    "topic": "Vue.js"
+  },
+  {
+    "question": "What is a lambda function in Python?",
+    "answer": "A function that uses lambda expressions",
+    "options": [
+      "A function that uses lambda expressions",
+      "A function with multiple parameters",
+      "A function that requires a lambda argument",
+      "A function that has a name"
+    ],
+    "topic": "Python"
+  },
+  {
+    "question": "What is a closure in JavaScript?",
+    "answer": "A function bundled with its surrounding state",
+    "options": [
+      "A type of loop",
+      "A function that has a name",
+      "A type of exception",
+      "A function bundled with its surrounding state"
+    ],
+    "topic": "JavaScript"
+  },
+  {
+    "question": "What is JSX in React.js?",
+    "answer": "A syntax extension for JavaScript",
+    "options": [
+      "A data format",
+      "A programming language",
+      "A markup language",
+      "A syntax extension for JavaScript"
+    ],
+    "topic": "React.js"
+  },
+  {
+    "question": "What is a component in Angular?",
+    "answer": "A building block of an Angular application",
+    "options": [
+      "A directive",
+      "A service",
+      "A module",
+      "A building block of an Angular application"
+    ],
+    "topic": "Angular"
+  },
+  {
+    "question": "What is Vuex in Vue.js?",
+    "answer": "A state management library",
+    "options": [
+      "A routing library",
+      "A state management library",
+      "A component library",
+      "A testing framework"
+    ],
+    "topic": "Vue.js"
+  },
+  {
+    "question": "What is Redux?",
+    "answer": "A state management library",
+    "options": [
+      "A database",
+      "A state management library",
+      "A CSS framework",
+      "A testing library"
+    ],
+    "topic": "Redux"
+  },
+  {
+    "question": "What is a reducer in Redux?",
+    "answer": "A pure function that calculates the next state",
+    "options": [
+      "A function that modifies the DOM",
+      "A function that computes the total of an array",
+      "A function that handles asynchronous tasks",
+      "A pure function that calculates the next state"
+    ],
+    "topic": "Redux"
+  },
+  {
+    "question": "What is the 'this' keyword in JavaScript?",
+    "answer": "A reserved keyword",
+    "options": [
+      "A reserved keyword",
+      "A variable",
+      "A data type",
+      "A function"
+    ],
+    "topic": "JavaScript"
+  },
+  {
+    "question": "What is event delegation in JavaScript?",
+    "answer": "A way to delegate event listeners",
+    "options": [
+      "A way to delegate functions",
+      "A way to delegate event listeners",
+      "A way to delegate variables",
+      "A way to delegate objects"
+    ],
+    "topic": "JavaScript"
+  },
+  {
+    "question": "What is an action in Redux?",
+    "answer": "A plain JavaScript object",
+    "options": [
+      "A function that modifies the state directly",
+      "A callback function",
+      "A higher-order component",
+      "A plain JavaScript object"
+    ],
+    "topic": "Redux"
+  },
+  {
+    "question": "What is middleware in Redux?",
+    "answer": "A tool for writing asynchronous logic",
+    "options": [
+      "A library for managing state",
+      "A tool for writing asynchronous logic",
+      "A type of action",
+      "A built-in feature of Redux"
+    ],
+    "topic": "Redux"
+  },
+  {
+    "question": "What is a closure in JavaScript?",
+    "answer": "A way to define private variables",
+    "options": [
+      "A way to define private variables",
+      "A way to execute a function multiple times",
+      "A way to prevent code from executing",
+      "A way to include external libraries"
+    ],
+    "topic": "JavaScript"
+  },
+  {
+    "question": "What is event bubbling in JavaScript?",
+    "answer": "A process of event propagation",
+    "options": [
+      "A process of event propagation",
+      "A way to cancel event propagation",
+      "A method to trigger events",
+      "A method to capture events"
+    ],
+    "topic": "JavaScript"
+  },
+  {
+    "question": "What is the purpose of the 'use strict' directive in JavaScript?",
+    "answer": "To enable strict mode",
+    "options": [
+      "To disable strict mode",
+      "To enable strict mode",
+      "To execute code in non-strict mode",
+      "To include external libraries"
+    ],
+    "topic": "JavaScript"
+  }
+]
