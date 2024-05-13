@@ -23,3 +23,7 @@ export const getCookie = (name) => {
   }
   return decodeURI(dc.substring(begin + prefix.length, end));
 };
+
+export const deleteCookie = (name) => {
+  document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+};

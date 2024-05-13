@@ -8,21 +8,16 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Quiz } from "./Quiz";
+import { deleteCookie, getCookie } from "../utils/cookies";
 
 export const Home = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [questions, setQuestions] = useState([]);
-  
-  const location = useLocation();
-  const { userId } = location?.state;
-  const token = userId;
+  const token = getCookie("abinashtoken");
 
   const options = [
     { value: "Python", name: "python" },
-    { value: "Java", name: "java" },
     { value: "JavaScript", name: "javascript" },
-    { value: "C", name: "c" },
-    { value: "C++", name: "c++" },
     { value: "Redux", name: "redux" },
     { value: "Angular", name: "angular" },
   ];
@@ -75,6 +70,12 @@ export const Home = () => {
     }
   };
 
+  const logout = () => {
+    deleteCookie("abinashtoken");
+    deleteCookie("userDetails");
+    window.location.reload();
+  };
+
   return (
     <div>
       <ToastContainer />
@@ -92,9 +93,13 @@ export const Home = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Change Networks
           </Typography>
-          <Link className="text-white" to="/">
+          <div
+            onClick={() => logout()}
+            className="text-white"
+            style={{ cursor: "pointer" }}
+          >
             Logout
-          </Link>
+          </div>
         </Toolbar>
       </AppBar>
       <Box
@@ -137,7 +142,6 @@ export const Home = () => {
         >
           <Quiz
             selectedOptions={selectedOptions}
-            token={token}
             questions={questions}
           />
         </div>

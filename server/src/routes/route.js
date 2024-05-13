@@ -4,6 +4,7 @@ import { userValidation } from "../middleware/validation.js";
 import { getSelectedTopics } from "../controllers/userSelectedTopics.js";
 import { getRandomQuestionsByTopic, submitAnswers } from "../controllers/quiz.js";
 import jwt from 'jsonwebtoken';
+import { leaderboarScrore, getleaderboarScrore } from "../controllers/leaderBoardController.js";
 
 const router = express.Router();
 
@@ -25,5 +26,7 @@ router.get("/questions/:topics", async (req, res) => {
   }
 });
 router.post("/submitanswers", submitAnswers);
+router.post("/leaderboard", leaderboarScrore)
+router.get("/getleaderboard", getleaderboarScrore)
 
 export default router;

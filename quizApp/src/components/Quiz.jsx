@@ -8,39 +8,25 @@ import {
   FormControl,
   FormLabel,
 } from "@mui/material";
-import "../styles/Quiz.css";
 import { Leaderboard } from "./Leaderboard";
+import { getCookie } from "../utils/cookies";
 
-export const Quiz = ({ selectedOptions, token, questions }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export const Quiz = ({ questions }) => {
   const [answers, setAnswers] = useState({});
-  const [showSubmit, setShowSubmit] = useState(false);
-  const [score, setScore] = useState(null);
   const [correctAnswers, setCorrectAnswers] = useState([]);
-  const [percentageScore, setPercentageScore] = useState(null);
+  const [refresh, setRefresh] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const token = getCookie("abinashtoken");
+
+  const toggleRefresh = () => {
+    setRefresh((prev) => !prev);
+  };
 
   const handleAnswerSubmit = (questionId, selectedOption) => {
     setAnswers({
       ...answers,
       [questionId]: selectedOption,
     });
-    // const currentQuestion = questions[currentIndex];
-    // const isCorrect = currentQuestion.answer === selectedOption;
-  };
-
-  const handleNext = () => {
-    if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setShowSubmit(true);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-      setShowSubmit(false);
-    }
   };
 
   const handleSubmitAnswers = async () => {
@@ -57,14 +43,50 @@ export const Quiz = ({ selectedOptions, token, questions }) => {
           },
         }
       );
-      console.log(response.data);
-      setScore(response.data.score);
-      setPercentageScore(response.data.percentageScore);
-      setCorrectAnswers(response.data.correctAnswers);
+      updateLeaderboard(
+        response.data.score,
+        response.data.percentageScore,
+        response.data.wrongAnswer
+      );
+      const filterCorrectAnswer = response?.data?.correctAnswers?.map(
+        (item) => item.correctAnswer
+      );
+      setCorrectAnswers(filterCorrectAnswer);
+      toggleRefresh();
+      setSubmitted(true);
     } catch (error) {
       console.error("Error submitting answers:", error);
     }
   };
+  // leaderboard
+  const updateLeaderboard = async (score, percentageScore, wrongAnswer) => {
+    try {
+      const getUserData = getCookie("userDetails");
+      const parseUserData = JSON.parse(getUserData);
+      const payload = {
+        name: parseUserData.name,
+        email: parseUserData.email,
+        correctAnswer: score,
+        wrongAnswer: wrongAnswer,
+        average: percentageScore,
+      };
+      const response = await axios.post(
+        "http://localhost:3000/api/users/leaderboard",
+        payload
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="container">
+        <h2>Thank you for submitting!</h2>
+        <Leaderboard refresh={refresh} toggleRefresh={toggleRefresh} />
+      </div>
+    );
+  }
 
   return (
     <div className="container">
@@ -87,6 +109,9 @@ export const Quiz = ({ selectedOptions, token, questions }) => {
                     value={option}
                     control={<Radio />}
                     label={option}
+                    className={`${
+                      correctAnswers?.includes(option) ? "text-success" : ""
+                    }`}
                   />
                 ))}
               </RadioGroup>
@@ -96,29 +121,14 @@ export const Quiz = ({ selectedOptions, token, questions }) => {
         <div style={{ textAlign: "right" }}>
           <Button
             type="button"
-            className="me-2"
-            variant="contained"
-            onClick={handlePrevious}
-            disabled={currentIndex === 0}
-          >
-            Previous
-          </Button>
-          <Button
-            type="button"
-            onClick={
-              currentIndex < questions.length - 1
-                ? handleNext
-                : handleSubmitAnswers
-            }
+            onClick={handleSubmitAnswers}
             variant="contained"
           >
-            {currentIndex < questions && questions.length - 1
-              ? "Next"
-              : "Submit"}
+            Submit
           </Button>
         </div>
       </div>
-      <Leaderboard score={score} percentageScore={percentageScore}/>
+      <Leaderboard refresh={refresh} toggleRefresh={toggleRefresh} />
     </div>
   );
 };

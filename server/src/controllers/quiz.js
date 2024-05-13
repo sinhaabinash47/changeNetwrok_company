@@ -43,6 +43,7 @@ export const submitAnswers = async (req, res) => {
     );
 
     let score = 0;
+    let wrongAnswer = 0; 
     const correctAnswers = [];
 
     filteredQuestions.forEach((question, index) => {
@@ -54,16 +55,18 @@ export const submitAnswers = async (req, res) => {
 
       if (isCorrect) {
         score = score + 1;
+      }else {
+        wrongAnswer = wrongAnswer + 1;
       }
+      
       correctAnswers.push({
         correctAnswer: question.answer,
         question: question.question,
         userAnswer,
       });
     });
-    console.log(score);
     const percentageScore = (score / filteredQuestions.length) * 100;
-    res.status(200).json({ score, percentageScore, correctAnswers });
+    res.status(200).json({ score, percentageScore, wrongAnswer, correctAnswers });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to submit answers.", status: 500 });

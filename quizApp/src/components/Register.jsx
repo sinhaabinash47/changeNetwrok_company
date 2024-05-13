@@ -18,7 +18,7 @@ export const Register = () => {
     password: "",
     confirmPassword: "",
   });
-  const apiUrl = "process.env.REACT_APP_API_URL_DEVELOPMENT";
+  
   const navigate = useNavigate();
 
   const handleTogglePasswordVisibility = (type) => {
@@ -42,7 +42,6 @@ export const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      //   const response = await axios.post(`${apiUrl}/register`, formData);
       const response = await axios.post(
         "http://localhost:3000/api/users/register",
         formData

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Card, CardContent, FormControl } from "@mui/material";
 import { Box } from "@mui/system";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { setCookie } from "../utils/cookies";
 
-export const Login = ({setUser}) => {
+export const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -32,13 +32,15 @@ export const Login = ({setUser}) => {
       );
       toast.success("Login successful...!", { autoClose: 1000 });
       setCookie("abinashtoken", response.data.token, 1);
+      setCookie("userDetails", JSON.stringify(response.data.user), 1);
       setTimeout(() => {
-        navigate("/home", { state: { userId: response.data.token } });
+        navigate("/");
+        window.location.reload();
       }, 2000);
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message);
-        const errorMessage = error.response.data.error || error.response.data.message;
+        const errorMessage =
+          error.response.data.error || error.response.data.message;
         toast.error(errorMessage, { autoClose: 1000 });
       } else {
         toast.error("Network error. Please try again later.", {
